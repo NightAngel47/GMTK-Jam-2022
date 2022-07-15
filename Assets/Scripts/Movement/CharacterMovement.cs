@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Movement
 {
-    public class CharacterMovement : MonoBehaviour
+    public abstract class CharacterMovement : MonoBehaviour
     {
         [SerializeField]
         private LayerMask _obstacleLayers;
