@@ -1,24 +1,51 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterMovement : MonoBehaviour
+namespace Movement
 {
-    protected float unitsPerSec = 1f;
-
-    /// <summary> Moves a character based on the given units. </summary>
-    /// <param name="newRelativePos"> How far to move this character in each direction. </param>
-    protected void Move(Vector3 unitsToMove)
+    public class CharacterMovement : MonoBehaviour
     {
-        Vector3 start = transform.position;
-        Vector3 end = transform.position + unitsToMove;
+        [SerializeField]
+        private LayerMask _obstacleLayers;
+    
+        private float unitsPerSec = 1f;
 
-        float step = 0;
-
-        do
+        protected void MoveCharacter(Vector3 direction, int distance)
         {
-            step += unitsPerSec * Time.deltaTime;
-            transform.position = Vector3.Lerp(start, end, step);
-        } while (step < 1f);
+            direction.Normalize();
+        
+            for (int i = 0; i < distance; i++)
+            {
+                if (NextSpaceFree(direction))
+                {
+                    StartCoroutine(Movement(direction));
+                }
+                else
+                {
+                    return;
+                }
+            }
+        }
+
+        private IEnumerator Movement(Vector3 direction)
+        {
+            var charPos = transform.position;
+            Vector3 start = charPos;
+            Vector3 end = charPos + direction;
+
+            float step = 0;
+
+            do
+            {
+                step += unitsPerSec * Time.deltaTime;
+                transform.position = Vector3.Lerp(start, end, step);
+                yield return null;
+            } while (step < 1f);
+        }
+
+        private bool NextSpaceFree(Vector3 direction)
+        {
+            return !Physics2D.Linecast(transform.position, direction, _obstacleLayers);
+        }
     }
 }
