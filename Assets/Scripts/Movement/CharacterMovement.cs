@@ -13,34 +13,34 @@ namespace Movement
         protected void MoveCharacter(Vector3 direction, int distance)
         {
             direction.Normalize();
-        
+
+            StartCoroutine(Movement(direction, distance));
+        }
+
+        private IEnumerator Movement(Vector3 direction, int distance)
+        {
             for (int i = 0; i < distance; i++)
             {
                 if (NextSpaceFree(direction))
                 {
-                    StartCoroutine(Movement(direction));
+                    var charPos = transform.position;
+                    Vector3 start = charPos;
+                    Vector3 end = charPos + direction;
+
+                    float step = 0;
+
+                    do
+                    {
+                        step += unitsPerSec * Time.deltaTime;
+                        transform.position = Vector3.Lerp(start, end, step);
+                        yield return null;
+                    } while (step < 1f);
                 }
                 else
                 {
-                    return;
+                    break;
                 }
             }
-        }
-
-        private IEnumerator Movement(Vector3 direction)
-        {
-            var charPos = transform.position;
-            Vector3 start = charPos;
-            Vector3 end = charPos + direction;
-
-            float step = 0;
-
-            do
-            {
-                step += unitsPerSec * Time.deltaTime;
-                transform.position = Vector3.Lerp(start, end, step);
-                yield return null;
-            } while (step < 1f);
         }
 
         private bool NextSpaceFree(Vector3 direction)
