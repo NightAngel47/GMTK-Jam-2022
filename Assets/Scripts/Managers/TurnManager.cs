@@ -46,13 +46,13 @@ namespace Managers
 
         private void HandlePlayerTurn()
         {
-            TurnState = Turns.EnemyTurn;
+            TurnState = Turns.PlayerTurn;
             _playerController.StartTurn();
         }
 
         private void HandleEnemyTurn()
         {
-            TurnState = Turns.PlayerTurn;
+            TurnState = Turns.EnemyTurn;
             _enemyController.StartTurn();
         }
     }
