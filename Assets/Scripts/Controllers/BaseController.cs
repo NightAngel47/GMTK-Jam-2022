@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Controllers
 {
-    public class BaseController : MonoBehaviour
+    public abstract class BaseController : MonoBehaviour
     {
         protected bool IsTurn { get; private set; }
         

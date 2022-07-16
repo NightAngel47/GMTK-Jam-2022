@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Movement;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Random = UnityEngine.Random;
 
 namespace Controllers
 {
@@ -34,12 +32,13 @@ namespace Controllers
             _hasTakenAction = false;
         }
 
+        // called by PlayerInput
         public void MovementInput(InputAction.CallbackContext context)
         {
             if (IsTurn && !_hasTakenAction && context.performed)
             {
                 _hasTakenAction = true;
-                int distance = Random.Range(1, 7);
+                int distance = 1; // Random.Range(1, 7);
                 _playerMovement.MovePlayer(context.ReadValue<Vector2>(), distance);
                 Debug.Log($"Player is moving {distance} units.");
 
