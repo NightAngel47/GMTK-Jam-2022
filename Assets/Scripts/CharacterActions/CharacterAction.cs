@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
 
 namespace CharacterActions
 {
@@ -13,5 +14,6 @@ namespace CharacterActions
     //[CreateAssetMenu(fileName = "CharacterAction", menuName = "ScriptableObjects/CharacterActions", order = 1)]
     public abstract class CharacterAction : ScriptableObject
     {
+        public ActionType ActionType;
     }
 }
