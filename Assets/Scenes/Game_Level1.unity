@@ -135,7 +135,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn Location 4
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -166,7 +166,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn Location 4 (1)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -197,7 +197,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn Location 5 (2)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -228,7 +228,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn Location 2 (1)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -259,7 +259,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn Location 3 (1)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -535,7 +535,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn Location 1 (1)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -3087,7 +3087,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn Location 1 (2)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -3118,7 +3118,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn Location 5 (1)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -3149,7 +3149,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn Location 2
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -3268,7 +3268,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn Location 3 (2)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -4592,7 +4592,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn Location 3
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -4623,7 +4623,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn Location 2 (2)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -4768,6 +4768,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8542070329723015570, guid: 62aa1c20e3e5c724a81d2bc1fe0c2195, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8542070329723015570, guid: 62aa1c20e3e5c724a81d2bc1fe0c2195, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62aa1c20e3e5c724a81d2bc1fe0c2195, type: 3}
 --- !u!4 &1208217346 stripped
@@ -4852,7 +4860,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn Location 5
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -5041,6 +5049,22 @@ PrefabInstance:
       value: EnemyController
       objectReference: {fileID: 0}
     - target: {fileID: 4738914256888336505, guid: a314c8c4772bb4f4b8dbb139c309cd7c, type: 3}
+      propertyPath: _enemies.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4738914256888336505, guid: a314c8c4772bb4f4b8dbb139c309cd7c, type: 3}
+      propertyPath: _enemies.Array.data[0]
+      value: 
+      objectReference: {fileID: 584565890}
+    - target: {fileID: 4738914256888336505, guid: a314c8c4772bb4f4b8dbb139c309cd7c, type: 3}
+      propertyPath: _enemies.Array.data[1]
+      value: 
+      objectReference: {fileID: 1796050334}
+    - target: {fileID: 4738914256888336505, guid: a314c8c4772bb4f4b8dbb139c309cd7c, type: 3}
+      propertyPath: _enemies.Array.data[2]
+      value: 
+      objectReference: {fileID: 1824770390}
+    - target: {fileID: 4738914256888336505, guid: a314c8c4772bb4f4b8dbb139c309cd7c, type: 3}
       propertyPath: EnemyBehaviours.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -5136,7 +5160,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn Location 6 (1)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -5167,7 +5191,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn Location 6
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -5198,7 +5222,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn Location 1
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -5229,7 +5253,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn Location 6 (2)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -5260,7 +5284,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn Location 4 (2)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1

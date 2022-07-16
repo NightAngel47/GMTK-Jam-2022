@@ -30,8 +30,6 @@ namespace Controllers
 
             TakeEnemyTurns();
 
-            SpawmEnemies();
-
             StartCoroutine(WaitForEndOfTurn());
         }
         
@@ -57,6 +55,8 @@ namespace Controllers
             {
                 enemy.DoAction();
             }
+
+            SpawmEnemies();
         }
 
         private void SpawmEnemies()
