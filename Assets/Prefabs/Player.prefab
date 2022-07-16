@@ -101,6 +101,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 403e51ed751a491b9ba1e6ce550261fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerActions:
+  - {fileID: 11400000, guid: 907969327c949c147982dc6461b9cfd0, type: 2}
+  - {fileID: 11400000, guid: 585c6317ce4af6745b2ab3cdcce0e7f8, type: 2}
+  - {fileID: 11400000, guid: 907969327c949c147982dc6461b9cfd0, type: 2}
+  - {fileID: 11400000, guid: 907969327c949c147982dc6461b9cfd0, type: 2}
 --- !u!114 &4401496555674302061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,7 +150,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4401496555674302062}
         m_TargetAssemblyTypeName: Controllers.PlayerController, Assembly-CSharp
-        m_MethodName: MovementInput
+        m_MethodName: ActionDirectionInput
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -197,6 +202,70 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 514cd3b8-2595-4d7a-b425-8f311e884a8e
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4401496555674302062}
+        m_TargetAssemblyTypeName: Controllers.PlayerController, Assembly-CSharp
+        m_MethodName: ActionOneInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d42f931b-a62f-4d29-9afa-ae62bee8863e
+    m_ActionName: Player/Action 1[/Keyboard/1,/Keyboard/numpad1]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4401496555674302062}
+        m_TargetAssemblyTypeName: Controllers.PlayerController, Assembly-CSharp
+        m_MethodName: ActionTwoInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5e7c9bd6-15a2-4fd7-aff5-49f45f8fbe0d
+    m_ActionName: Player/Action 2[/Keyboard/2,/Keyboard/numpad2]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4401496555674302062}
+        m_TargetAssemblyTypeName: Controllers.PlayerController, Assembly-CSharp
+        m_MethodName: ActionThreeInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f19df436-0272-4727-903e-959afd0224d2
+    m_ActionName: Player/Action 3[/Keyboard/3,/Keyboard/numpad3]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4401496555674302062}
+        m_TargetAssemblyTypeName: Controllers.PlayerController, Assembly-CSharp
+        m_MethodName: ActionFourInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f7c66e14-3f4e-42c7-903a-e14ecd36a398
+    m_ActionName: Player/Action 4[/Keyboard/4,/Keyboard/numpad4]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

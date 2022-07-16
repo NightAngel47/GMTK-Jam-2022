@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8954b419eecd413d89d6d1c90c11bb12, type: 3}
   m_Name: EnemyMovementAction
   m_EditorClassIdentifier: 
+  _actionName: Default Enemy Movement
   _actionType: 0
   _moveDistance: 1
