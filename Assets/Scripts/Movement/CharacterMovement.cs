@@ -8,7 +8,7 @@ namespace Movement
         [SerializeField]
         private LayerMask _obstacleLayers;
     
-        private float unitsPerSec = 1f;
+        private float timeToMove = 1f;
 
         public bool DoneMoving { get; private set; }
 
@@ -35,7 +35,7 @@ namespace Movement
 
                     do
                     {
-                        step += unitsPerSec * Time.deltaTime;
+                        step += distance / timeToMove * Time.deltaTime;
                         transform.position = Vector3.Lerp(start, end, step);
                         yield return null;
                     } while (step < 1f);
