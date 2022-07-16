@@ -6,8 +6,20 @@ namespace Controllers
     public class BaseController : MonoBehaviour
     {
         protected bool IsTurn { get; private set; }
-
-        public void StartTurn()
+        
+        private void Awake()
+        {
+            if (Instance != null && Instance != this) 
+            { 
+                Destroy(this); 
+            } 
+            else
+            { 
+                Instance = this; 
+            }
+        }
+        
+        public virtual void StartTurn()
         {
             IsTurn = true;
         }
