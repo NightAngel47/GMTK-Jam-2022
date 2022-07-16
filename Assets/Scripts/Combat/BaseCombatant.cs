@@ -8,6 +8,8 @@ namespace Combat
         public bool IsDead { get; private set; }
         public int CurHealth { get; private set; }
 
+        public float DestroyDelayOnDeath => _destroyDelayOnDeath;
+
         [SerializeField]
         private int _maxHealth;
 
@@ -38,7 +40,7 @@ namespace Combat
         private void Died()
         {
             IsDead = true;
-            Destroy(gameObject, _destroyDelayOnDeath);
+            Destroy(gameObject, DestroyDelayOnDeath);
         }
     }
 }

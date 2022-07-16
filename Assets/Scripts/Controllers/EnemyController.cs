@@ -8,8 +8,14 @@ namespace Controllers
     public class EnemyController : BaseController
     {
         public static EnemyController Instance { get; private set; }
+
+        public float DelayForDeath => _delayForDeath;
+
         [SerializeField]
         private List<EnemyBehaviour> _enemies = new List<EnemyBehaviour>();
+
+        [SerializeField]
+        private float _delayForDeath = 2f;
         
         private void Awake()
         {
@@ -34,7 +40,10 @@ namespace Controllers
             // TODO add wait for attacks
             
             // wait for the dead
-            yield return new WaitUntil(() => RemoveDeadEnemies().All(enemy => !enemy.IsDying()));
+            if (RemoveDeadEnemies())
+            {
+                yield return new WaitForSeconds(_delayForDeath);
+            }
             
             // wait for spawning
             yield return new WaitUntil(SpawnEnemies);
@@ -51,7 +60,7 @@ namespace Controllers
             }
         }
 
-        private List<EnemyBehaviour> RemoveDeadEnemies()
+        private bool RemoveDeadEnemies()
         {
             List<EnemyBehaviour> enemiesDying = _enemies.Where(enemyBehaviour => enemyBehaviour.IsDying()).ToList();
             foreach (var enemyBehaviour in enemiesDying.Where(enemyBehaviour => _enemies.Any(enemy => enemyBehaviour == enemy)))
@@ -59,7 +68,7 @@ namespace Controllers
                 _enemies.Remove(enemyBehaviour);
             }
 
-            return enemiesDying;
+            return enemiesDying.Count > 0;
         }
 
         private bool SpawnEnemies()
