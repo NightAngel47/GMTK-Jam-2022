@@ -30,6 +30,18 @@ namespace Controllers
         {
             base.StartTurn();
             _hasTakenAction = false;
+            
+            StartCoroutine(WaitForEndOfTurn());
+        }
+
+        protected override IEnumerator WaitForEndOfTurn()
+        {
+            yield return new WaitUntil(() => _hasTakenAction);
+            
+            yield return new WaitUntil(() => _playerMovement.DoneMoving);
+            // add more things to wait for before ending turn
+                
+            EndTurn();
         }
 
         // called by PlayerInput
@@ -41,21 +53,7 @@ namespace Controllers
                 int distance = 1; // Random.Range(1, 7);
                 _playerMovement.MovePlayer(context.ReadValue<Vector2>(), distance);
                 Debug.Log($"Player is moving {distance} units.");
-
-                StartCoroutine(WaitForActionToEnd());
             }
-        }
-
-        private IEnumerator WaitForActionToEnd()
-        {
-            if (_hasTakenAction)
-            {
-                yield return new WaitUntil(() => _playerMovement.DoneMoving);
-                
-                EndTurn();
-            }
-            
-            yield return null;
         }
     }
 }

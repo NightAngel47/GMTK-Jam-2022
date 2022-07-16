@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Movement;
@@ -30,13 +31,21 @@ namespace Controllers
 
             SpawmEnemies();
 
+            StartCoroutine(WaitForEndOfTurn());
+        }
+        
+        protected override IEnumerator WaitForEndOfTurn()
+        {
+            yield return new WaitUntil(() => EnemyBehaviours.All(enemy => enemy.IsDoneMoving()));
+            // add more things to wait for before ending turn
+                
             EndTurn();
         }
 
         private void TakeEnemyTurns()
         {
             Vector3 playerPosition = PlayerController.Instance.transform.position;
-            foreach (EnemyBehaviour enemy in EnemyBehaviours.OrderBy(x => Vector2.Distance(x.transform.position, playerPosition)))
+            foreach (EnemyBehaviour enemy in EnemyBehaviours.OrderBy(e => Vector2.Distance(e.transform.position, playerPosition)))
             {
                 enemy.DoAction();
             }

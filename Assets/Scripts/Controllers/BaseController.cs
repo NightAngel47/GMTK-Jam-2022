@@ -1,4 +1,5 @@
-﻿using Managers;
+﻿using System.Collections;
+using Managers;
 using UnityEngine;
 
 namespace Controllers
@@ -17,5 +18,7 @@ namespace Controllers
             IsTurn = false;
             TurnManager.Instance.NextTurn();
         }
+
+        protected abstract IEnumerator WaitForEndOfTurn();
     }
 }
