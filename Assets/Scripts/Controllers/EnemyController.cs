@@ -28,6 +28,10 @@ namespace Controllers
             base.StartTurn();
 
             TakeEnemyTurns();
+
+            SpawmEnemies();
+
+            EndTurn();
         }
 
         private void TakeEnemyTurns()
@@ -38,15 +42,26 @@ namespace Controllers
             for (int index = 0; index < EnemyGameObjects.Count; index++)
             {
                 Vector2 dir = playerPosition - EnemyGameObjects[index].transform.position;
-                if (Mathf.Abs(dir.x) >= Mathf.Abs(dir.y))
-                    dir = new Vector2(Mathf.Sign(dir.x), 0f);
+                
+                if (dir.magnitude <= 1)
+                {
+                    // Attack
+                }
                 else
-                    dir = new Vector2(0f, Mathf.Sign(dir.y));
+                {
+                    if (Mathf.Abs(dir.x) >= Mathf.Abs(dir.y))
+                        dir = new Vector2(Mathf.Sign(dir.x), 0f);
+                    else
+                        dir = new Vector2(0f, Mathf.Sign(dir.y));
 
-                EnemyGameObjects[index].GetComponent<EnemyMovement>().MoveEnemy(dir, 1);
+                    EnemyGameObjects[index].GetComponent<EnemyMovement>().MoveEnemy(dir, 1);
+                }
             }
+        }
 
-            EndTurn();
+        private void SpawmEnemies()
+        {
+
         }
     }
 }
