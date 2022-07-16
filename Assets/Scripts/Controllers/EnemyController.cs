@@ -38,6 +38,7 @@ namespace Controllers
             Vector3 playerPosition = PlayerController.Instance.transform.position;
             foreach (EnemyBehaviour enemy in EnemyBehaviours.OrderBy(x => Vector2.Distance(x.transform.position, playerPosition)))
             {
+                enemy.DoAction();
             }
         }
 

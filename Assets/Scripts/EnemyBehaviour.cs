@@ -26,12 +26,14 @@ public class EnemyBehaviour : MonoBehaviour
         }
         else
         {
-            if (Mathf.Abs(dir.x) >= Mathf.Abs(dir.y))
-                dir = new Vector2(Mathf.Sign(dir.x), 0f);
-            else
-                dir = new Vector2(0f, Mathf.Sign(dir.y));
-
-            _enemyMovement.MoveEnemy(dir, 1);
+            _enemyActions[0].ExecuteAction(dir, _enemyMovement);
+            
+            //if (Mathf.Abs(dir.x) >= Mathf.Abs(dir.y))
+            //    dir = new Vector2(Mathf.Sign(dir.x), 0f);
+            //else
+            //    dir = new Vector2(0f, Mathf.Sign(dir.y));
+            //
+            //_enemyMovement.MoveEnemy(dir, 1);
         }
     }
 }

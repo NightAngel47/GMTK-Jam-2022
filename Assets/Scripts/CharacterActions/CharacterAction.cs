@@ -14,6 +14,9 @@ namespace CharacterActions
     //[CreateAssetMenu(fileName = "CharacterAction", menuName = "ScriptableObjects/CharacterActions", order = 1)]
     public abstract class CharacterAction : ScriptableObject
     {
-        public ActionType ActionType;
+        [SerializeField]
+        private ActionType _actionType = ActionType.None;
+
+        public abstract void ExecuteAction(params  object[] list);
     }
 }
