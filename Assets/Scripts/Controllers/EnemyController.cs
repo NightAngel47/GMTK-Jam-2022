@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Movement;
@@ -9,7 +8,7 @@ namespace Controllers
     public class EnemyController : BaseController
     {
         public static EnemyController Instance { get; private set; }
-        public List<GameObject> EnemyGameObjects;
+        public List<EnemyBehaviour> EnemyBehaviours;
         
         private void Awake()
         {
@@ -37,25 +36,8 @@ namespace Controllers
         private void TakeEnemyTurns()
         {
             Vector3 playerPosition = PlayerController.Instance.transform.position;
-            EnemyGameObjects.OrderBy(x => Vector2.Distance(x.transform.position, playerPosition));
-
-            for (int index = 0; index < EnemyGameObjects.Count; index++)
+            foreach (EnemyBehaviour enemy in EnemyBehaviours.OrderBy(x => Vector2.Distance(x.transform.position, playerPosition)))
             {
-                Vector2 dir = playerPosition - EnemyGameObjects[index].transform.position;
-                
-                if (dir.magnitude <= 1)
-                {
-                    // Attack
-                }
-                else
-                {
-                    if (Mathf.Abs(dir.x) >= Mathf.Abs(dir.y))
-                        dir = new Vector2(Mathf.Sign(dir.x), 0f);
-                    else
-                        dir = new Vector2(0f, Mathf.Sign(dir.y));
-
-                    EnemyGameObjects[index].GetComponent<EnemyMovement>().MoveEnemy(dir, 1);
-                }
             }
         }
 
