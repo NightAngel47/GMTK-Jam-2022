@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 namespace Movement
@@ -51,7 +52,26 @@ namespace Movement
 
         private bool NextSpaceFree(Vector3 direction)
         {
-            return !Physics2D.Linecast(transform.position, direction, _obstacleLayers);
+            RaycastHit2D[] hits = new RaycastHit2D[2];
+            Vector3 charPos = transform.position;
+            if (Physics2D.LinecastNonAlloc(charPos, charPos + direction, hits, _obstacleLayers) > 1)
+            {
+                foreach (var hit in hits)
+                {
+                    if (hit.transform.gameObject)
+                    {
+                        Debug.Log($"Hit Object: {hit.transform.gameObject.name}");
+                        if (hit.transform.gameObject != gameObject)
+                        {
+                            return false;
+                        }
+                    }
+                }
+
+                return true;
+            }
+
+            return true;
         }
     }
 }
