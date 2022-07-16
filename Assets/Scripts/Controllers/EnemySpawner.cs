@@ -49,7 +49,8 @@ namespace Controllers
                 occupied = Physics2D.CircleCast(point.position, 0.5f, Vector2.zero);
 
                 dist = PlayerController.Instance.transform.position - point.position;
-            } while (!occupied && (dist.x >= minSpawnDist.x || dist.y >= minSpawnDist.y));
+                Debug.Log(dist);
+            } while (!occupied && (dist.x >= minSpawnDist.x && dist.y >= minSpawnDist.y));
 
             return point;
         }

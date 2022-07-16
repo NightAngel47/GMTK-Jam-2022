@@ -342,6 +342,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1705141982}
     m_Modifications:
+    - target: {fileID: 5792558063311215300, guid: 7cc2ebbe8d45007489f9a13b96223997, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5792558063311215300, guid: 7cc2ebbe8d45007489f9a13b96223997, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6907946466206823989, guid: 7cc2ebbe8d45007489f9a13b96223997, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -412,6 +420,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 632126293}
+  - component: {fileID: 632126294}
   m_Layer: 0
   m_Name: Enemy Spawner
   m_TagString: Untagged
@@ -452,6 +461,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &632126294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632126292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85652100c4707a24498909d91c002f27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefabs:
+  - {fileID: 6907946466206823989, guid: 7cc2ebbe8d45007489f9a13b96223997, type: 3}
+  spawnPoints: []
+  minSpawnDist: {x: 5, y: 3}
 --- !u!1 &661603036
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,6 +561,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1705141982}
     m_Modifications:
+    - target: {fileID: 5792558063311215300, guid: 7cc2ebbe8d45007489f9a13b96223997, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5792558063311215300, guid: 7cc2ebbe8d45007489f9a13b96223997, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6907946466206823989, guid: 7cc2ebbe8d45007489f9a13b96223997, type: 3}
       propertyPath: m_Name
       value: Enemy (1)
@@ -4749,6 +4782,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1705141982}
     m_Modifications:
+    - target: {fileID: 5792558063311215300, guid: 7cc2ebbe8d45007489f9a13b96223997, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5792558063311215300, guid: 7cc2ebbe8d45007489f9a13b96223997, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6907946466206823989, guid: 7cc2ebbe8d45007489f9a13b96223997, type: 3}
       propertyPath: m_Name
       value: Enemy (2)
