@@ -73,8 +73,13 @@ namespace Controllers
 
         private bool SpawnEnemies()
         {
-            _enemies.Add(EnemySpawner.Instance.SpawnEnemy(Combat.EnemyTypes.Normal));
+            EnemyBehaviour spawnedEnemy = EnemySpawner.Instance.SpawnEnemy(Combat.EnemyTypes.Normal);
 
+            if (spawnedEnemy)
+            {
+                _enemies.Add(spawnedEnemy);
+            }
+            
             return true;
         }
     }

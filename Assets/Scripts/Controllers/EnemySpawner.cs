@@ -34,7 +34,9 @@ namespace Controllers
 
         public EnemyBehaviour SpawnEnemy(Combat.EnemyTypes type)
         {
-            return Instantiate(enemyPrefabs[(int)type], GetRandomSpawnPoint().position, Quaternion.identity, EnemyController.Instance.transform).GetComponent<EnemyBehaviour>();
+            Transform spawnPos = GetRandomSpawnPoint();
+            
+            return spawnPos ? Instantiate(enemyPrefabs[(int)type], spawnPos.position, Quaternion.identity, EnemyController.Instance.transform).GetComponent<EnemyBehaviour>() : null;
         }
 
         private Transform GetRandomSpawnPoint()
@@ -43,15 +45,26 @@ namespace Controllers
             bool occupied = false;
             Vector3 dist = Vector3.zero;
 
+            List<Transform> spawnPointsToCheck = spawnPoints;
+
             do
             {
-                point = spawnPoints[Random.Range(1, spawnPoints.Count)];
+                point = spawnPointsToCheck[Random.Range(0, spawnPointsToCheck.Count)];
+                spawnPointsToCheck.Remove(point);
+                
                 occupied = Physics2D.CircleCast(point.position, 0.5f, Vector2.zero);
 
                 dist = PlayerController.Instance.transform.position - point.position;
-                Debug.Log(dist);
-            } while (!occupied && (dist.x >= minSpawnDist.x && dist.y >= minSpawnDist.y));
+                
+                Debug.Log($"Point checked was Occupied: {occupied} & Distance was: {dist}");
+            } while (!occupied && (dist.x >= minSpawnDist.x && dist.y >= minSpawnDist.y) || spawnPointsToCheck.Count == 0);
 
+            // handle not finding a point
+            if (spawnPointsToCheck.Count == 0)
+            {
+                point = null;
+            }
+            
             return point;
         }
     }
