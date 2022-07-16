@@ -253,6 +253,7 @@ GameObject:
   - component: {fileID: 8575777000717198007}
   - component: {fileID: 7422520191456063532}
   - component: {fileID: 6439167248306419449}
+  - component: {fileID: 4309920658598876137}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -306,6 +307,20 @@ MonoBehaviour:
   _obstacleLayers:
     serializedVersion: 2
     m_Bits: 448
+--- !u!114 &4309920658598876137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6907946466206823989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12c8df0700cd4484920d6e5a40b080d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 0
+  _enemyTypes: 0
 --- !u!1 &7507630024741681329
 GameObject:
   m_ObjectHideFlags: 0
