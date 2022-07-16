@@ -21,7 +21,7 @@ namespace Controllers
             }
         }
         
-        public void StartTurn()
+        public virtual void StartTurn()
         {
             IsTurn = true;
         }
