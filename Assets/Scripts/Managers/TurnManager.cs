@@ -55,14 +55,14 @@ namespace Managers
         private void HandlePlayerTurn()
         {
             TurnState = Turns.PlayerTurn;
-            PlayerController.Instance.StartTurn();
+            StartCoroutine(PlayerController.Instance.StartTurn());
             Debug.Log("Started Player Turn");
         }
 
         private void HandleEnemyTurn()
         {
             TurnState = Turns.EnemyTurn;
-            EnemyController.Instance.StartTurn();
+            StartCoroutine(EnemyController.Instance.StartTurn());
             Debug.Log("Started Enemy Turn");
         }
     }

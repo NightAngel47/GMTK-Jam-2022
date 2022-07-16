@@ -8,9 +8,10 @@ namespace Controllers
     {
         protected bool IsTurn { get; private set; }
         
-        public virtual void StartTurn()
+        public virtual IEnumerator StartTurn()
         {
             IsTurn = true;
+            yield return null;
         }
 
         protected void EndTurn()
@@ -18,7 +19,5 @@ namespace Controllers
             IsTurn = false;
             TurnManager.Instance.NextTurn();
         }
-
-        protected abstract IEnumerator WaitForEndOfTurn();
     }
 }

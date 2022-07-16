@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Movement;
 
 namespace Controllers
 {
@@ -24,27 +23,22 @@ namespace Controllers
             }
         }
 
-        public override void StartTurn()
+        public override IEnumerator StartTurn()
         {
-            base.StartTurn();
+            StartCoroutine(base.StartTurn());
+
+            yield return new WaitUntil(() => IsTurn);
 
             TakeEnemyTurns();
-
-            StartCoroutine(WaitForEndOfTurn());
-        }
-        
-        protected override IEnumerator WaitForEndOfTurn()
-        {
             yield return new WaitUntil(() => _enemies.All(enemy => enemy.IsDoneMoving()));
-            // add more things to wait for before ending turn
-
-            List<EnemyBehaviour> enemiesDying = _enemies.Where(enemyBehaviour => enemyBehaviour.IsDying()).ToList();
-            foreach (var enemyBehaviour in enemiesDying.Where(enemyBehaviour => _enemies.Any(enemy => enemyBehaviour == enemy)))
-            {
-                _enemies.Remove(enemyBehaviour);
-            }
-            yield return new WaitUntil(() => enemiesDying.All(enemy => !enemy.IsDying()));
-                
+            // TODO add wait for attacks
+            
+            // wait for the dead
+            yield return new WaitUntil(() => RemoveDeadEnemies().All(enemy => !enemy.IsDying()));
+            
+            // wait for spawning
+            yield return new WaitUntil(SpawnEnemies);
+            
             EndTurn();
         }
 
@@ -55,13 +49,24 @@ namespace Controllers
             {
                 enemy.DoAction();
             }
-
-            SpawmEnemies();
         }
 
-        private void SpawmEnemies()
+        private List<EnemyBehaviour> RemoveDeadEnemies()
+        {
+            List<EnemyBehaviour> enemiesDying = _enemies.Where(enemyBehaviour => enemyBehaviour.IsDying()).ToList();
+            foreach (var enemyBehaviour in enemiesDying.Where(enemyBehaviour => _enemies.Any(enemy => enemyBehaviour == enemy)))
+            {
+                _enemies.Remove(enemyBehaviour);
+            }
+
+            return enemiesDying;
+        }
+
+        private bool SpawnEnemies()
         {
             _enemies.Add(EnemySpawner.Instance.SpawnEnemy(Combat.EnemyTypes.Normal));
+
+            return true;
         }
     }
 }

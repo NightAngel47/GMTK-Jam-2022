@@ -34,16 +34,11 @@ namespace Controllers
             _playerMovement = GetComponent<PlayerMovement>();
         }
         
-        public override void StartTurn()
+        public override IEnumerator StartTurn()
         {
-            base.StartTurn();
+            StartCoroutine(base.StartTurn());
             _hasTakenAction = false;
             
-            StartCoroutine(WaitForEndOfTurn());
-        }
-
-        protected override IEnumerator WaitForEndOfTurn()
-        {
             yield return new WaitUntil(() => _hasTakenAction);
             
             yield return new WaitUntil(() => _playerMovement.DoneMoving);
