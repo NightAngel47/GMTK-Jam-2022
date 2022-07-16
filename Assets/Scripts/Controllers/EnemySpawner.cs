@@ -32,9 +32,9 @@ namespace Controllers
             spawnPoints.AddRange(GetComponentsInChildren<Transform>(true));
         }
 
-        public void SpawnEnemies(int count)
+        public EnemyBehaviour SpawnEnemy(Combat.EnemyTypes type)
         {
-            Transform point = GetRandomSpawnPoint();
+            return Instantiate(enemyPrefabs[(int)type], GetRandomSpawnPoint().position, Quaternion.identity, EnemyController.Instance.transform).GetComponent<EnemyBehaviour>();
         }
 
         private Transform GetRandomSpawnPoint()
