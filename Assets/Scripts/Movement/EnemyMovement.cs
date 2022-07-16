@@ -5,19 +5,9 @@ namespace Movement
 {
     public class EnemyMovement : CharacterMovement
     {
-        private void OnEnable()
+        public void MoveEnemy(Vector3 direction, int distance)
         {
-
-        }
-
-        private void OnDisable()
-        {
-
-        }
-
-        private void Move()
-        {
-            
+            MoveCharacter(direction, distance);
         }
     }
 }

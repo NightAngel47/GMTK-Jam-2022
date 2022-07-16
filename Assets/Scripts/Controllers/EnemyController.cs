@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using Movement;
 
 namespace Controllers
 {
@@ -30,7 +32,19 @@ namespace Controllers
 
         private void TakeEnemyTurns()
         {
-            //Enemies take turns
+            Vector3 playerPosition = PlayerController.Instance.transform.position;
+            EnemyGameObjects.OrderBy(x => Vector2.Distance(x.transform.position, playerPosition));
+
+            for (int index = 0; index < EnemyGameObjects.Count; index++)
+            {
+                Vector2 dir = playerPosition - EnemyGameObjects[index].transform.position;
+                if (Mathf.Abs(dir.x) >= Mathf.Abs(dir.y))
+                    dir = new Vector2(Mathf.Sign(dir.x), 0f);
+                else
+                    dir = new Vector2(0f, Mathf.Sign(dir.y));
+
+                EnemyGameObjects[index].GetComponent<EnemyMovement>().MoveEnemy(dir, 1);
+            }
 
             EndTurn();
         }
