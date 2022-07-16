@@ -27,6 +27,7 @@ namespace Controllers
             if (dir.magnitude <= 1)
             {
                 // Attack
+                _enemyCombatant.TakeDamage(1);
             }
             else
             {

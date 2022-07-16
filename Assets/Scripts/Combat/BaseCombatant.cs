@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 namespace Combat
 {
@@ -7,18 +8,26 @@ namespace Combat
         public bool IsDead { get; private set; }
         public int CurHealth { get; private set; }
 
-        public int MaxHealth
-        {
-            get => _maxHealth;
-            private set => _maxHealth = value;
-        }
-
         [SerializeField]
         private int _maxHealth;
+
+        [SerializeField]
+        private Slider _healthBarUI;
+
+        [SerializeField]
+        private float _destroyDelayOnDeath = 2f;
+
+        private void Awake()
+        {
+            CurHealth = _maxHealth;
+            _healthBarUI.maxValue = CurHealth;
+        }
 
         public void TakeDamage(int damageTake)
         {
             CurHealth -= damageTake;
+
+            _healthBarUI.value = CurHealth;
 
             if (CurHealth <= 0)
             {
@@ -29,7 +38,7 @@ namespace Combat
         private void Died()
         {
             IsDead = true;
-            Destroy(gameObject, 2f);
+            Destroy(gameObject, _destroyDelayOnDeath);
         }
     }
 }
