@@ -9,6 +9,10 @@ namespace CharacterActions
         [SerializeField]
         private int _moveDistance = 1;
         
+        /// <summary>
+        /// Executes Enemy Movement. 
+        /// </summary>
+        /// <param name="list">Object 0: Vector2 Direction, Object 1: EnemyMovement enemyMovement</param>
         public override void ExecuteAction(params object[] list)
         {
             Vector2 dir = (Vector2)list[0];

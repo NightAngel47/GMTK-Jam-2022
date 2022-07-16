@@ -1,4 +1,6 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
+using CharacterActions;
 using Movement;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,9 +10,15 @@ namespace Controllers
     public class PlayerController : BaseController
     {
         public static PlayerController Instance { get; private set; }
-        
+
+        [SerializeField]
+        private PlayerAction[] _playerActions = new PlayerAction[4];
+
         private PlayerMovement _playerMovement;
         private bool _hasTakenAction;
+        
+        private int _selectedActionIndex = -1;
+        private Vector2 _selectedDirection = Vector2.zero;
 
         private void Awake()
         {
@@ -44,15 +52,83 @@ namespace Controllers
             EndTurn();
         }
 
-        // called by PlayerInput
-        public void MovementInput(InputAction.CallbackContext context)
+        private void PreformAction()
         {
-            if (IsTurn && !_hasTakenAction && context.performed)
+            // determine if we have both an action and direction picked
+            if (_selectedActionIndex < 0 || !(_selectedDirection.magnitude > 0)) return;
+            
+            _hasTakenAction = true;
+
+            // preform movement or attack action
+            if (_playerActions[_selectedActionIndex].ActionType == ActionType.Movement)
             {
-                _hasTakenAction = true;
-                int distance = 1; // Random.Range(1, 7);
-                _playerMovement.MovePlayer(context.ReadValue<Vector2>(), distance);
-                Debug.Log($"Player is moving {distance} units.");
+                _playerActions[_selectedActionIndex].ExecuteAction(_selectedDirection, _playerMovement);
+            }
+            else
+            {
+                // player attack
+            }
+                
+            // reset selection
+            _selectedActionIndex = -1;
+            _selectedDirection = Vector2.zero;
+        }
+
+        // called by input and also UI buttons
+        public void ActionSelection(int actionIndex)
+        {
+            if (!IsTurn || _hasTakenAction) return;
+            
+            _selectedActionIndex = actionIndex;
+            Debug.Log($"Action: {_playerActions[_selectedActionIndex].ActionName} is selected");
+
+            PreformAction();
+        }
+
+        // called by PlayerInput
+        public void ActionDirectionInput(InputAction.CallbackContext context)
+        {
+            if (!context.performed || !IsTurn || _hasTakenAction) return;
+            
+            _selectedDirection = context.ReadValue<Vector2>();
+            Debug.Log($"Action Dir: {_selectedDirection}");
+            
+            PreformAction();
+        }
+
+        // called by PlayerInput
+        public void ActionOneInput(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                ActionSelection(0);
+            }
+        }
+
+        // called by PlayerInput
+        public void ActionTwoInput(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                ActionSelection(1);
+            }
+        }
+
+        // called by PlayerInput
+        public void ActionThreeInput(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                ActionSelection(2);
+            }
+        }
+
+        // called by PlayerInput
+        public void ActionFourInput(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                ActionSelection(3);
             }
         }
     }
