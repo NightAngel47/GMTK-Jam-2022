@@ -11,7 +11,7 @@ namespace Combat
     class EnemyCombatant : BaseCombatant
     {
         [SerializeField]
-        private EnemyTypes _enemyTypes;
+        private EnemyTypes _enemyTypes = EnemyTypes.None;
 
         public EnemyTypes EnemyTypes
         {

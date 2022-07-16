@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using CharacterActions;
+using Combat;
 using Movement;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ namespace Controllers
     public class EnemyBehaviour : MonoBehaviour
     {
         private EnemyMovement _enemyMovement;
+        private EnemyCombatant _enemyCombatant;
 
         [SerializeField]
         private List<EnemyAction> _enemyActions;
@@ -15,6 +17,7 @@ namespace Controllers
         private void Awake()
         {
             _enemyMovement = GetComponent<EnemyMovement>();
+            _enemyCombatant = GetComponent<EnemyCombatant>();
         }
 
         public void DoAction()
