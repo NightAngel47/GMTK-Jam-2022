@@ -12,18 +12,20 @@ namespace Managers
     
     public class TurnManager : MonoBehaviour
     {
-        public static TurnManager Instance = null;
+        public static TurnManager Instance { get; private set; }
+
         public Turns TurnState { get; private set; } = Turns.None;
 
-        private PlayerController _playerController;
-        private EnemyController _enemyController;
-        
         private void Awake()
         {
-            if (Instance == null)
-                Instance = this;
-            else if (Instance != this)
-                Destroy(this);
+            if (Instance != null && Instance != this) 
+            { 
+                Destroy(this); 
+            } 
+            else
+            { 
+                Instance = this; 
+            }
         }
 
         public void NextTurn()
@@ -47,13 +49,13 @@ namespace Managers
         private void HandlePlayerTurn()
         {
             TurnState = Turns.PlayerTurn;
-            _playerController.StartTurn();
+            PlayerController.Instance.StartTurn();
         }
 
         private void HandleEnemyTurn()
         {
             TurnState = Turns.EnemyTurn;
-            _enemyController.StartTurn();
+            EnemyController.Instance.StartTurn();
         }
     }
 }
