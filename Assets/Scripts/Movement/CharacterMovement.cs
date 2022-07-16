@@ -10,9 +10,13 @@ namespace Movement
     
         private float unitsPerSec = 1f;
 
+        public bool DoneMoving { get; private set; }
+
         protected void MoveCharacter(Vector3 direction, int distance)
         {
             direction.Normalize();
+
+            DoneMoving = false;
 
             StartCoroutine(Movement(direction, distance));
         }
@@ -41,6 +45,8 @@ namespace Movement
                     break;
                 }
             }
+            
+            DoneMoving = true;
         }
 
         private bool NextSpaceFree(Vector3 direction)
