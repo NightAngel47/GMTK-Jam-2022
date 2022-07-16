@@ -6,10 +6,21 @@ namespace Controllers
 {
     public class PlayerController : BaseController
     {
+        public static PlayerController Instance { get; private set; }
+        
         private PlayerMovement _playerMovement;
 
         private void Awake()
         {
+            if (Instance != null && Instance != this) 
+            { 
+                Destroy(this); 
+            } 
+            else
+            { 
+                Instance = this; 
+            }
+            
             _playerMovement = GetComponent<PlayerMovement>();
         }
 

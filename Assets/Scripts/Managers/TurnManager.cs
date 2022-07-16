@@ -1,3 +1,4 @@
+using System;
 using Controllers;
 using UnityEngine;
 
@@ -28,13 +29,18 @@ namespace Managers
             }
         }
 
+        private void Start()
+        {
+            NextTurn(); // TODO remove temp for testing player
+        }
+
         public void NextTurn()
         {
             switch (TurnState)
             {
                 case Turns.None:
                     // go to player turn (likely first turn or problem lol)
-                    TurnState = Turns.PlayerTurn;
+                    TurnState = Turns.EnemyTurn;
                     NextTurn();
                     break;
                 case Turns.PlayerTurn:
