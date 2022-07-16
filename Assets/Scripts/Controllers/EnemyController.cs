@@ -10,7 +10,7 @@ namespace Controllers
     {
         public static EnemyController Instance { get; private set; }
         [SerializeField]
-        private List<EnemyBehaviour> enemies = new List<EnemyBehaviour>();
+        private List<EnemyBehaviour> _enemies = new List<EnemyBehaviour>();
         
         private void Awake()
         {
@@ -37,8 +37,15 @@ namespace Controllers
         
         protected override IEnumerator WaitForEndOfTurn()
         {
-            yield return new WaitUntil(() => enemies.All(enemy => enemy.IsDoneMoving()));
+            yield return new WaitUntil(() => _enemies.All(enemy => enemy.IsDoneMoving()));
             // add more things to wait for before ending turn
+
+            List<EnemyBehaviour> enemiesDying = _enemies.Where(enemyBehaviour => enemyBehaviour.IsDying()).ToList();
+            foreach (var enemyBehaviour in enemiesDying.Where(enemyBehaviour => _enemies.Any(enemy => enemyBehaviour == enemy)))
+            {
+                _enemies.Remove(enemyBehaviour);
+            }
+            yield return new WaitUntil(() => enemiesDying.All(enemy => !enemy.IsDying()));
                 
             EndTurn();
         }
@@ -46,7 +53,7 @@ namespace Controllers
         private void TakeEnemyTurns()
         {
             Vector3 playerPosition = PlayerController.Instance.transform.position;
-            foreach (EnemyBehaviour enemy in enemies.OrderBy(e => Vector2.Distance(e.transform.position, playerPosition)))
+            foreach (EnemyBehaviour enemy in _enemies.OrderBy(e => Vector2.Distance(e.transform.position, playerPosition)))
             {
                 enemy.DoAction();
             }
@@ -54,7 +61,7 @@ namespace Controllers
 
         private void SpawmEnemies()
         {
-            enemies.Add(EnemySpawner.Instance.SpawnEnemy(Combat.EnemyTypes.Normal));
+            _enemies.Add(EnemySpawner.Instance.SpawnEnemy(Combat.EnemyTypes.Normal));
         }
     }
 }

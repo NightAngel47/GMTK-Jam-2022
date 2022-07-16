@@ -39,5 +39,10 @@ namespace Controllers
         {
             return _enemyMovement.DoneMoving;
         }
+
+        public bool IsDying()
+        {
+            return _enemyCombatant.IsDead;
+        }
     }
 }
