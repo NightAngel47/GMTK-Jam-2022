@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerActions:
   - {fileID: 11400000, guid: 907969327c949c147982dc6461b9cfd0, type: 2}
-  - {fileID: 11400000, guid: 907969327c949c147982dc6461b9cfd0, type: 2}
+  - {fileID: 11400000, guid: 585c6317ce4af6745b2ab3cdcce0e7f8, type: 2}
   - {fileID: 11400000, guid: 907969327c949c147982dc6461b9cfd0, type: 2}
   - {fileID: 11400000, guid: 907969327c949c147982dc6461b9cfd0, type: 2}
 --- !u!114 &4401496555674302061
